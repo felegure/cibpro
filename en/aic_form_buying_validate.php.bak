@@ -1,0 +1,236 @@
+<?php
+ session_start();
+require_once('../Connections/cibproto.php');
+
+$currentPage = $_SERVER["PHP_SELF"];
+require_once ("utilang_en.php");
+
+$maxRows_Re_buying_view = 10;
+$pageNum_Re_buying_view = 0;
+if (isset($_GET['pageNum_Re_buying_view'])) {
+  $pageNum_Re_buying_view = $_GET['pageNum_Re_buying_view'];
+}
+$startRow_Re_buying_view = $pageNum_Re_buying_view * $maxRows_Re_buying_view;
+
+$maxRows_Re_buying_view_2 = 10;
+$pageNum_Re_buying_view_2 = 0;
+if (isset($_GET['pageNum_Re_buying_view_2'])) {
+  $pageNum_Re_buying_view_2 = $_GET['pageNum_Re_buying_view_2'];
+}
+$startRow_Re_buying_view_2 = $pageNum_Re_buying_view_2 * $maxRows_Re_buying_view_2;
+
+mysqli_select_db($database_cibproto, $cibproto);
+$query_Re_buying_view_2 = "SELECT checker,tbuying_rowid, tecowas_id, tecowas_desc, 
+tproduct_id, tproduct_desc, tproduct_brand_name, 
+tpack_id, tpack_desc, 
+tbuying_price_per_pack, tbuying_price_per_pack_dol, tbuying_price_per_pack_eur, tbuying_pack_size,
+tbuying_lead_time, 
+ttransport_id, ttransport_desc, tpresent_id, tpresent_desc, tinco_id, 
+tinco_desc, DATE_FORMAT(tbuying_dbid,'%d-%m-%Y') tbuying_dbid, tcur_id, tcur_desc, tcur_symb, exr, 
+tsrcfund_id, tsrcfund_desc, tprov_id, tprov_desc, tprov_coun_id, tprov_coun_desc, ttype_prov_id, 
+ttype_prov_desc, tmanu_id, tmanu_desc, tmanu_coun_id, tmanu_coun_desc, 
+tsmalunit_id, tsmalunit_desc, tbuying_ppu, tbuying_ppu_dol, tbuying_ppu_eur, tbuying_tcost, tbuying_qty_pack, 
+tbuying_pack_size, tbuying_lead_time,tbuying_remark,
+tbuying_status
+FROM $view_table_name WHERE tecowas_id = '{$_SESSION['COUNTRY']}'
+and tbuying_status ='2'";
+// echo " XXXXXXXXXXXXXle query=$query_Re_buying_view_2 <BR>";
+$query_limit_Re_buying_view_2 = sprintf("%s LIMIT %d, %d", $query_Re_buying_view_2, $startRow_Re_buying_view_2, $maxRows_Re_buying_view_2);
+$Re_buying_view_2 = mysqli_query($query_limit_Re_buying_view_2, $cibproto) or die(mysqli_error());
+$row_Re_buying_view_2 = mysqli_fetch_assoc($Re_buying_view_2);
+
+
+
+$query_limit_Re_buying_view_2 = sprintf("%s LIMIT %d, %d", $query_Re_buying_view_2, $startRow_Re_buying_view_2, $maxRows_Re_buying_view_2);
+$Re_buying_view_2 = mysqli_query($query_limit_Re_buying_view_2, $cibproto) or die(mysqli_error());
+$row_Re_buying_view_2 = mysqli_fetch_assoc($Re_buying_view_2);
+
+if (isset($_GET['totalRows_Re_buying_view_2'])) {
+  $totalRows_Re_buying_view_2 = $_GET['totalRows_Re_buying_view_2'];
+} else {
+  $all_Re_buying_view_2 = mysqli_query($query_Re_buying_view_2);
+  $totalRows_Re_buying_view_2 = mysqli_num_rows($all_Re_buying_view_2);
+  if ($totalRows_Re_buying_view_2==0) {
+ 
+	 echo "<script language='JavaScript'>alert('No rows found !!')</script>"; 
+	 require_once ("manage_form_val_1.php");
+	exit;
+  }
+  
+}
+$totalPages_Re_buying_view_2 = ceil($totalRows_Re_buying_view_2/$maxRows_Re_buying_view_2)-1;
+
+$queryString_Re_buying_view_2 = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_Re_buying_view_2") == false && 
+        stristr($param, "totalRows_Re_buying_view_2") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_Re_buying_view_2 = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_Re_buying_view_2 = sprintf("&totalRows_Re_buying_view_2=%d%s", $totalRows_Re_buying_view_2, $queryString_Re_buying_view_2);
+
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Validation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
+<!--
+.Style1 {
+	font-size: 18px;
+	color: #0000FF;
+	font-weight: bold;
+}
+.Style30 {color: #000000}
+.Style72 {color: #000000; font-size: 12px; }
+.Style73 {font-size: 12px}
+.Style75 {color: #009900; font-size: 12px; }
+.Style76 {color: #990000}
+.Style77 {font-size: 18px; color: #990000; font-weight: bold; }
+-->
+</style>
+
+</head>
+
+<body>
+
+<table width="963" border="1" cellpadding="2" cellspacing="2">
+  <tr>
+    <th width="126" scope="row"><div align="center" class="Style73">&nbsp; <a href="manage_form_val.php" title="Retour" class="Style9 Style19 Style76">Back</a></div></th>
+    <td width="530"><div align="center" class="Style7 Style49"><span class="Style84"> <span class="Style77">Validation Screen </span></span></div></td>
+    <td width="145"><div align="center" class="Style72">user : 
+            <?php
+				echo "{$_SESSION['username']}";
+	?>
+    </div></td>
+    <td width="126"><div align="center" class="Style30 Style73">Date :
+            <?php 
+      $today = date (" D j, M,Y  H:i:s");
+      echo " $today "; ?>
+    </div></td>
+  </tr>
+</table>
+
+<table border="0" width="50%" align="center">
+  <tr>
+    <td width="23%" align="center">
+      <?php if ($pageNum_Re_buying_view_2 > 0) { // Show if not first page ?>
+      <a href="<?php printf("%s?pageNum_Re_buying_view_2=%d%s", $currentPage, 0, $queryString_Re_buying_view_2); ?>"><img src="First.gif" border=0></a>
+      <?php } // Show if not first page ?>
+    </td>
+    <td width="31%" align="center">
+      <?php if ($pageNum_Re_buying_view_2 > 0) { // Show if not first page ?>
+      <a href="<?php printf("%s?pageNum_Re_buying_view_2=%d%s", $currentPage, max(0, $pageNum_Re_buying_view_2 - 1), $queryString_Re_buying_view_2); ?>"><img src="Previous.gif" border=0></a>
+      <?php } // Show if not first page ?>
+    </td>
+    <td width="23%" align="center">
+      <?php if ($pageNum_Re_buying_view_2 < $totalPages_Re_buying_view_2) { // Show if not last page ?>
+      <a href="<?php printf("%s?pageNum_Re_buying_view_2=%d%s", $currentPage, min($totalPages_Re_buying_view_2, $pageNum_Re_buying_view_2 + 1), $queryString_Re_buying_view_2); ?>"><img src="Next.gif" border=0></a>
+      <?php } // Show if not last page ?>
+    </td>
+    <td width="23%" align="center">
+      <?php if ($pageNum_Re_buying_view_2 < $totalPages_Re_buying_view_2) { // Show if not last page ?>
+      <a href="<?php printf("%s?pageNum_Re_buying_view_2=%d%s", $currentPage, $totalPages_Re_buying_view_2, $queryString_Re_buying_view_2); ?>"><img src="Last.gif" border=0></a>
+      <?php } // Show if not last page ?>
+    </td>
+  </tr>
+</table>
+ <table width="1000" border="1">
+  <tr class="Style30">
+  
+  
+  <th width="100" nowrap scope="row"><span class="Style30 Style73"><span class="Style75">Validate Yes ? </span></span></th>
+   <th width="100" nowrap scope="row"><span class="Style30 Style73">Date of bid openeing / Date of reception </span></th>
+    <th width="100" nowrap scope="row"><span class="Style30 Style73">Product</span></th>
+    <td width="185" class="Style1"><span class="Style30 Style73">Presentation</span></td>
+    <td width="180" class="Style1"><div align="center" class="Style30 Style73">Smalest unit </div></td>
+
+    <td width="180" class="Style30"><div align="center" class="Style73"><strong>Packaging type </strong></div></td>
+    <td width="162" class="Style1"><div align="center" class="Style30 Style73">
+      <div align="center" class="Style30 Style73">Price per Pack</div>
+      </div></td>
+    <td width="177" class="Style1"><div align="center" class="Style73"><span class="Style30">Quantity </span></div></td>
+
+    <td width="164" class="Style1"><div align="center" class="Style30 Style73">Total cost</div></td>
+    <td width="181" class="Style1"><div align="center" class="Style30 Style73">Incoterm</div></td>
+    <td width="163" class="Style1"><div align="center" class="Style73"><span class="Style30">Supplier</span></div></td>
+    <td width="175" class="Style1"><div align="center" class="Style30 Style73">Manufacturer</div></td>
+    <td width="200" class="Style1"><div align="center" class="Style30 Style73">Transportation</div></td>
+    <td width="80" class="Style1"><div align="center" class="Style30 Style73">Lead time (days)</div></td>
+  </tr>
+   <?php 
+   $i=0;
+   do { 
+   ?>
+  <tr>
+    <td width="100" nowrap  class="Style25 Style73"><div align="center">
+      <?php  
+	  $country=$_SESSION['COUNTRY'];
+	
+	  $usercountry=$_SESSION['username'];
+	  
+	//  $_SESSION['ROWID'] = $row_Re_buying_view_2['tbuying_rowid'];
+	//  $rowid=$_SESSION['ROWID'];
+	 $rowid = $row_Re_buying_view_2['tbuying_rowid'];
+	// echo "$rowid<BR>";
+	// $titreURL = urlEncode ($row_Re_buying_view_2['tbuying_rowid']);
+	$titreURL = urlEncode ($rowid);	
+	echo "<A HREF='aic_form_buying_validate_maj.php?rowid=$rowid'>
+			Yes <A/>";		
+	?>    
+    <td width="185" bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tbuying_dbid']; ?></div></td>
+	<td width="185" bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tproduct_desc']; ?></div></td>
+   
+    <td width="60" bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tpresent_desc']; ?></div></td>
+	
+    <td nowrap bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tsmalunit_desc']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><span class="Style30"><?php echo $row_Re_buying_view_2['tpack_desc']; ?></span></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><span class="Style30 Style73"><?php echo $row_Re_buying_view_2['tbuying_price_per_pack'].$row_Re_buying_view_2['tcur_id']; ?></span></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tbuying_qty_pack']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tbuying_tcost'].$row_Re_buying_view_2['tcur_id']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tinco_desc']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tprov_desc']."<BR> ".$row_Re_buying_view_2['tprov_coun_desc']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tmanu_desc']." ".$row_Re_buying_view_2['tmanu_coun_desc']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['ttransport_desc']; ?></div></td>
+    <td bgcolor="#CCCCCC" class="Style25"><div align="center" class="Style73"><?php echo $row_Re_buying_view_2['tbuying_lead_time']; ?></div></td>
+	 
+
+  
+  </tr>
+   <?php 
+   //$Tableau[$i]=@$_POST['checker'];
+ //  $Tableau[$i]="Premier";
+   //$Tableau[$i+1]="Deuxieme";
+    $Tableau[$i]=$row_Re_buying_view_2['tbuying_rowid'];
+	$Tabchecked[$i]=@$_POST['checker'];
+	
+	//if(!empty($_POST['checker'])) echo "OOOOOOOOOOOOOOO non vide Vous avez choisi comme option -<b>";
+	//else echo "00000000000000000000 est vide <BR>";
+   // if (!isset($_POST['checker'])) 	 echo "XXX checker non selectionne $i   ";
+	// if (isset($_POST['checker'])) 	 echo "XXX checker selectionne $i   ";
+	// else echo "XXX checker nest pas selectionne $i    ";
+ //  echo "tableau($i)(0)=$Tableau[$i] , tableau($i)(1)=$Tabchecked[$i] <BR>";
+   $i= $i + 1;
+   } while ($row_Re_buying_view_2 = mysqli_fetch_assoc($Re_buying_view_2)); ?>
+</table>
+<form name="form1" method="post" action="validate_buying.php">
+  <div align="center">  <a href="#"></a></div>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
+<?php
+
+mysqli_free_result($Re_buying_view_2);
+
+// definir une fonction  qui va essayer de afire la validation
+
+?>

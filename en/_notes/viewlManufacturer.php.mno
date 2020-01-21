@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ReManufacturer" value="name:tecowas_desc;datatype:string,name:tproduct_desc;datatype:string,name:tbuying_uv;datatype:int,name:tconcent_desc;datatype:string,name:tdosage_desc;datatype:string,name:tbuying_su;datatype:real,name:tbuying_us;datatype:int,name:tpack_desc;datatype:string,name:tbuying_ppu;datatype:real,name:tbuying_tcost;datatype:real,name:tbuying_qu;datatype:real,name:tpresent_desc;datatype:string,name:tinco_desc;datatype:string,name:tbuying_dbid;datatype:date,name:tcur_desc;datatype:string,name:tsrcfund_desc;datatype:string,name:tprov_desc;datatype:string,name:ttype_prov_desc;datatype:string,name:ttransport_desc;datatype:string,name:tbuying_manu_id;datatype:int,name:tbuying_manu_coun_id;datatype:string" />
+</info>

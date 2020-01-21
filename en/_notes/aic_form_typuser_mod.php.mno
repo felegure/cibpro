@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Re_typuser" value="name:ttypuser_id;datatype:string,name:ttypuser_desc;datatype:string,name:ttypuser_status;datatype:string,name:ttypuser_author;datatype:string,name:ttypuser_dmod;datatype:date" />
+</info>

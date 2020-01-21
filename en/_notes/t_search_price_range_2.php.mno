@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Re_Ecowas" value="name:tecowas_id;datatype:string,name:tecowas_desc;datatype:string" />
+	<infoitem key="UD_Re_categ" value="name:tcateg_id;datatype:string,name:tcateg_desc;datatype:string" />
+	<infoitem key="UD_Re_product" value="name:tproduct_id;datatype:string,name:tproduct_desc;datatype:string" />
+	<infoitem key="UD_Re_supplier" value="name:tprov_id;datatype:int,name:tprov_desc;datatype:string" />
+	<infoitem key="UD_Re_currency" value="name:tcur_id;datatype:string,name:tcur_desc;datatype:string" />
+	<infoitem key="UD_Re_country" value="name:tcountry_id;datatype:string,name:tcountry_desc;datatype:string" />
+</info>

@@ -1,0 +1,184 @@
+
+A:link { text-decoration: none; color: #FFFF00; }
+A:visited { text-decoration: none; color: #FFFF00; }
+A:hover { text-decoration: underline; color: #FFFF00; }
+A:active { text-decoration: underline; color: #CCCC99; }
+
+
+span.text1
+{
+font-size: 12px;
+color: #cccc99;
+line-height: 18px;
+font-family: Verdana,Arial,Helvetica;
+}
+
+span.text
+{
+font-size: 11px;
+color: #333333;
+line-height: 21px;
+font-family: Verdana,Arial,Helvetica;
+}
+
+span.sub
+{
+font-size: 11px;
+color: #CCCC99;
+line-height: 21px;
+font-family: Verdana,Arial,Helvetica;
+}
+
+
+span.text4
+{
+font-size: 11px;
+color: #663333;
+line-height: 20px;
+font-family: Verdana,Arial,Helvetica;
+}
+
+
+span.css
+{
+font-size: 12px;
+color: #000000;
+line-height: 21px;
+font-family: "Courier New",Courier;
+}
+
+.sb {scrollbar-3dlight-color:#FFFF00;
+           scrollbar-arrow-color:#FFFF00;
+           scrollbar-base-color:#336699;
+           scrollbar-darkshadow-color:#FFFF00;
+           scrollbar-face-color:#336699;
+           scrollbar-highlight-color:#336699;
+           scrollbar-shadow-color:}
+		   
+		  /***********************************************/
+/* divs.css                                    */
+/*                                             */
+/* These layout divs define the page layout.   */
+/*                                             */
+/***********************************************/
+
+
+/***********************************************/
+/* Layout Divs                                 */
+
+/************************************/
+#row1{
+	border-bottom: 1px solid #CCCCCC;
+	width: 100%;
+}
+
+/************************************/
+
+
+/************************************/
+#col1{
+	position: absolute;
+	left:850px;
+	left:1000px;
+
+  float: right;
+	width: 32%;
+	margin-right: 1%;
+	padding: 1%;
+	background-color: #FFFFD6;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: #FFFFFF;
+}
+#col11{
+	float: left;
+	width: 65%;
+	margin-left: 1%;
+	padding: 1%;
+	background-color: #FFFFD6;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: #FFFFFF;
+}
+/************************************/
+
+#colmain{
+	float: left;
+	width: 65%;
+	margin-left: 1%;
+	padding: 1%;
+	background-color: #043056;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	color: #FFFFFF;
+}
+
+/************************************/
+#col2{
+	float: 60%;
+}
+/************************************/
+
+/*End Layout Divs                              */
+/***********************************************/
+.Style1 {color: #993300};
+.Style3 {color: #003366};
+.Style6 {	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #00FF00;
+}
+
+.Style7 {color: #FFFF00;}
+.Style13 {color: #FFFF00; font-weight: bold; }
+.Style14 {color: #990000;}
+.Style17 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; }
+.Style19 {
+	color: #ECE9D8;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.Style21 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.Style22 {font-weight: bold; font-size: 14px; color: #990000; }
+.Style23 {font-size: 14px; color: #FFFFFF;}
+.Style24 {color: #FFFF66;}
+.Style25 {color: #990000;}
+.Style28 {color: #0000CC;}
+.Style39 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.Style40 {color: #0000CC; font-family: Arial, Helvetica, sans-serif; }
+.Style46 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #CCCCCC; }
+.Style47 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #0000FF; }
+.Style48 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #CCCC99;
+	font-size: 12px;
+}
+
+
+.Style52 {
+	color: #666666;
+	font-style: italic;
+	font-size: 9px;
+}
+.Style54 {font-size: 14px;}
+.Style56 {
+	font-size: 16px;
+	color: #0000FF;
+}
+.Style60 {color: #D3D3D3;}
+.Style62 {color: #EBE9ED;}
+.Style63 {font-size: 14px; font-family: Arial, Helvetica, sans-serif;}
+.Style64 {color: #000033}
+.Style65 {font-size: 14px; color: #000033; }
+.Style66 {color: #000000;}
+.Style67 {color: #0000FF;}
+.Style69 {color: #0000FF; font-weight: bold; }
+.Style70 {font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000033; }
+.Style71 {color: #0000FF}
+.Style72 {font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; color: #E3E9F1; }
+.Style73 {color: #006600;}
+.Style77 {font-size: 14px; color: #0000FF; }
+.Style90 {font-family: Verdana, Arial, Helvetica, sans-serif;}
+

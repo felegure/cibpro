@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Re_users" value="name:tusers_id;datatype:int,name:tusers_desc;datatype:string,name:tusers_ecowas_id;datatype:string,name:tusers_funct;datatype:string,name:tusers_dept;datatype:string,name:tusers_adress;datatype:string,name:tusers_ph1;datatype:string,name:tusers_ph2;datatype:string,name:tusers_mob;datatype:string,name:tusers_fax;datatype:string,name:tusers_email;datatype:string,name:tusers_web;datatype:string,name:tusers_passwd;datatype:string,name:tusers_remark;datatype:string,name:tusers_status;datatype:string" />
+	<infoitem key="UD_Max_Re_users" value="name:max(tusers_id);datatype:int" />
+</info>

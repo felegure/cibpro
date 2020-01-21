@@ -1,0 +1,75 @@
+<title>aic_prod_lowest_price.php</title>
+<?php
+$maxRows_RePriceLow = 200; 
+$pageNum_RePriceLow = 0;
+mysqli_select_db($database_cibproto, $cibproto);
+$currentPage = $_SERVER["PHP_SELF"];
+if (isset($_GET['pageNum_RePriceLow'])) {
+  $pageNum_RePriceLow = $_GET['pageNum_RePriceLow'];
+}
+$startRow_RePriceLow = $pageNum_RePriceLow * $maxRows_RePriceLow;
+$colname_RePriceLow = "1";
+if (isset($_GET['tbuying_dbid'])) {
+  $colname_RePriceLow = (get_magic_quotes_gpc()) ? $_GET['tbuying_dbid'] : addslashes($_GET['tbuying_dbid']);
+}
+if (!mysqli_select_db($database_cibproto, $cibproto))
+{ 
+echo "Desolé accès a la base" . $database_cibproto . " impossible \n";
+exit;
+}
+/*
+if ( $pCure =='EUR') {
+$PPU = "tbuying_ppu_eur";
+$TCUR_SYMB = "€";
+$ppp="tbuying_price_per_pack_eur";
+$ppu="tbuying_ppu_eur";
+$tcost="tbuying_tcost_eur";
+$tbuying_price_per_pack="tbuying_price_per_pack_eur";
+$tbuying_tcost="tbuying_tcost_eur";
+$tbuying_ppu="tbuying_ppu_eur";
+}
+else 
+{
+$PPU = "tbuying_ppu_dol";
+$TCUR_SYMB = "$";
+$ppp="tbuying_price_per_pack_dol";
+$ppu="tbuying_ppu_dol";
+$tcost="tbuying_tcost_dol";
+$tbuying_price_per_pack="tbuying_price_per_pack_dol";
+$tbuying_tcost="tbuying_tcost_dol";
+$tbuying_ppu="tbuying_ppu_dol";
+
+}
+*/
+ $queryString_RePriceLow = sprintf("%s" ,
+"SELECT tproduct_desc, tpresent_desc, tprov_desc, tprov_coun_desc, tmanu_desc, tmanu_coun_desc,tbuying_pack_size,{$tbuying_price_per_pack},
+tbuying_qty_pack, {$tbuying_tcost},  tinco_desc,min({$tbuying_ppu}) {$tbuying_ppu}, tbuying_qu,
+DATE_FORMAT(tbuying_dbid,'%d-%m-%Y') tbuying_dbid ,tecowas_desc,ttransport_desc, tbuying_lead_time, tbuying_remark
+ from $view_table_name where tbuying_status='1' ");
+$queryString_RePriceLow.= $param_country.$param_cat.$param_prod.$param_prov;
+$queryString_RePriceLow.= " AND ({$tbuying_ppu} between '$pMini' and '$pMaxi' or ('$pMini' is NULL and '$pMaxi' is NULL))
+AND (tbuying_dbid >= STR_TO_DATE('$pDsta','%d-%m-%Y') 
+	and (tbuying_dbid <= STR_TO_DATE('$pDend','%d-%m-%Y')))
+	GROUP BY tproduct_id 
+	 ORDER BY tproduct_id, {$tbuying_ppu}, tbuying_dbid ASC";
+//	echo "XXqueryString_RePriceLow= $queryString_RePriceLow <BR>";
+$query_limit_RePriceLow = sprintf("%s LIMIT %d, %d", $queryString_RePriceLow, $startRow_RePriceLow, $maxRows_RePriceLow);
+
+set_time_limit (0);
+$RePriceLow = mysqli_query($query_limit_RePriceLow, $cibproto) or die(mysqli_error());
+
+$row_RePriceLow = mysqli_fetch_assoc($RePriceLow);
+
+if (isset($_GET['totalRows_RePriceLow'])) {
+  $totalRows_RePriceLow = $_GET['totalRows_RePriceLow'];
+} else {
+  $all_RePriceLow = mysqli_query($queryString_RePriceLow);
+  $totalRows_RePriceLow = mysqli_num_rows($all_RePriceLow);
+  if ($totalRows_RePriceLow==0) { 
+	 echo "<script language='JavaScript'>alert('No records found !!')</script>"; 
+	require_once ($pForm_Name);
+	exit;
+  }
+$totalPages_RePriceLow = ceil($totalRows_RePriceLow/$maxRows_RePriceLow)-1;
+}
+?>

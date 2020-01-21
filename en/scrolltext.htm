@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Document sans nom</title>
+<html>
+<head>
+<STYLE TYPE="text/css">BODY {scrollbar-face-color: #0069B3; scrollbar-shadow-color: #000000;scrollbar-highlight-color: #FFFFFF;scrollbar-3dlight-color: #000000; scrollbar-darkshadow-color: #000000; scrollbar-track-color: #0069B3; scrollbar-arrow-color: #FFCC00;}</STYLE>
+<!-- DEBUT DU SCRIPT -->
+<SCRIPT LANGUAGE="JavaScript">
+size=50;
+x = 3*size;
+place = 0;
+texte = 'Vous allez pouvoir placez ici le texte de votre choix';
+texteDef = texte;
+function defil()
+	{
+	texteDef = texteDef.substring(1,texteDef.length);
+	while(texteDef.length < x)
+		{
+		texteDef += " - " + texte;
+		}
+	document.defil.defilbox.value = texteDef;
+	tempo2 = setTimeout("defil()", 150)
+	}
+</SCRIPT>
+<!-- FIN DU SCRIPT -->
+</head>
+<body onLoad="defil()" onUnload="clearTimeout(tempo2)" bgcolor="#0069B3">
+<center><br><br>
+<FORM NAME="defil">
+<SCRIPT LANGUAGE="JavaScript">
+document.write('<INPUT TYPE="text" NAME="defilbox" SIZE=' + size + '>');
+</SCRIPT>
+</FORM>
+</center>
+<!-- FIN DU SCRIPT -->
+</body>
+</html>

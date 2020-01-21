@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Re_access" value="name:taccess_id;datatype:int,name:taccess_user_name;datatype:string,name:taccess_user_pwd;datatype:string,name:taccess_users_id;datatype:string,name:taccess_typuser_id;datatype:string,name:taccess_sdate;datatype:date,name:taccess_edate;datatype:date,name:taccess_aut;datatype:string,name:taccess_dmod;datatype:date,name:taccess_ecowas_id;datatype:string,name:taccess_status;datatype:string" />
+	<infoitem key="UD_Re_Max_access" value="name:max(taccess_id) + 1;datatype:int" />
+</info>
